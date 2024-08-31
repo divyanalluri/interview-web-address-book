@@ -1,80 +1,622 @@
 {
-    "people": [
+  "people": [
+    {
+      "id": 1,
+      "name": "Adam Wright",
+      "profile_photo_url": "https://example.com/photos/adam_wright.jpg",
+      "phoneNumber": "123-456-7890",
+      "department": "Engineering",
+      "email": "adam.wright@example.com",
+      "education": [
         {
-            "name": "Adam Wright",
-            "education": [
-                {
-                    "institution": "NC State University",
-                    "startYear": 2001,
-                    "endYear": 2004,
-                    "degree": "Bachelor's, Computer Science"
-                }
-            ],
-
-            "workExperience": [
-                {
-                    "institution": "Megacorp",
-                    "startYear": 2001,
-                    "title": "Software Developer"
-                }
-            ]
-        },
-        {
-            "name": "Joe Manfrey",
-            "education": [
-                {
-                    "institution": "Clemson University",
-                    "startYear": 1990,
-                    "endYear": 1995,
-                    "degree": "Bachelor's, Computer Science"
-                }
-            ],
-
-            "workExperience": [
-                {
-                    "institution": "Food Inc.",
-                    "startYear": 1998,
-                    "title": "Software Developer"
-                }
-            ]
-        },
-        {
-            "name": "Douglas Cho",
-            "education": [
-                {
-                    "institution": "University of NC, Chapel Hill",
-                    "startYear": 1990,
-                    "endYear": 1995,
-                    "degree": "Marketing"
-                }
-            ],
-
-            "workExperience": [
-                {
-                    "institution": "Food Inc.",
-                    "startYear": 1998,
-                    "title": "Software Developer"
-                }
-            ]
-        },
-        {
-            "name": "Allison Murray",
-            "education": [
-                {
-                    "institution": "University of Southern California",
-                    "startYear": 2001,
-                    "endYear": 2005,
-                    "degree": "Sociology"
-                }
-            ],
-
-            "workExperience": [
-                {
-                    "institution": "United Products",
-                    "startYear": 1998,
-                    "title": "Directory of IT"
-                }
-            ]
+          "institution": "NC State University",
+          "startYear": 2001,
+          "endYear": 2004,
+          "degree": "Bachelor's, Computer Science"
         }
-    ]
+      ],
+      "workExperience": [
+        {
+          "institution": "Megacorp",
+          "startYear": 2005,
+          "endYear": 2009,
+          "title": "Software Developer"
+        },
+        {
+          "institution": "Tech Innovations",
+          "startYear": 2010,
+          "endYear": 2014,
+          "title": "Senior Software Engineer"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Joe Manfrey",
+      "profile_photo_url": "https://example.com/photos/joe_manfrey.jpg",
+      "phoneNumber": "234-567-8901",
+      "department": "Development",
+      "email": "joe.manfrey@example.com",
+      "education": [
+        {
+          "institution": "Clemson University",
+          "startYear": 1990,
+          "endYear": 1995,
+          "degree": "Bachelor's, Computer Science"
+        }
+      ],
+      "workExperience": [
+        {
+          "institution": "Food Inc.",
+          "startYear": 1998,
+          "endYear": 2002,
+          "title": "Software Developer"
+        },
+        {
+          "institution": "GreenTech Solutions",
+          "startYear": 2005,
+          "endYear": 2010,
+          "title": "Lead Developer"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Douglas Cho",
+      "profile_photo_url": "https://example.com/photos/douglas_cho.jpg",
+      "phoneNumber": "345-678-9012",
+      "department": "Product Management",
+      "email": "douglas.cho@example.com",
+      "education": [
+        {
+          "institution": "University of NC, Chapel Hill",
+          "startYear": 1990,
+          "endYear": 1995,
+          "degree": "Marketing"
+        }
+      ],
+      "workExperience": [
+        {
+          "institution": "Food Inc.",
+          "startYear": 1998,
+          "endYear": 2003,
+          "title": "Software Developer"
+        },
+        {
+          "institution": "TechWave",
+          "startYear": 2006,
+          "endYear": 2012,
+          "title": "Product Manager"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Allison Murray",
+      "profile_photo_url": "https://example.com/photos/allison_murray.jpg",
+      "phoneNumber": "456-789-0123",
+      "department": "IT",
+      "email": "allison.murray@example.com",
+      "education": [
+        {
+          "institution": "University of Southern California",
+          "startYear": 2001,
+          "endYear": 2005,
+          "degree": "Sociology"
+        }
+      ],
+      "workExperience": [
+        {
+          "institution": "United Products",
+          "startYear": 2006,
+          "endYear": 2011,
+          "title": "Director of IT"
+        },
+        {
+          "institution": "Global Ventures",
+          "startYear": 2012,
+          "endYear": 2016,
+          "title": "Chief Information Officer (CIO)"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Emily Johnson",
+      "profile_photo_url": "https://example.com/photos/emily_johnson.jpg",
+      "phoneNumber": "567-890-1234",
+      "department": "Engineering",
+      "email": "emily.johnson@example.com",
+      "education": [
+        {
+          "institution": "Harvard University",
+          "startYear": 1996,
+          "endYear": 2000,
+          "degree": "Bachelor's, Electrical Engineering"
+        },
+        {
+          "institution": "MIT",
+          "startYear": 2001,
+          "endYear": 2003,
+          "degree": "Master's, Computer Science"
+        }
+      ],
+      "workExperience": [
+        {
+          "institution": "Innovatech",
+          "startYear": 2004,
+          "endYear": 2009,
+          "title": "Software Engineer"
+        },
+        {
+          "institution": "AlphaTech",
+          "startYear": 2010,
+          "endYear": 2015,
+          "title": "Engineering Manager"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Michael Brown",
+      "profile_photo_url": "https://example.com/photos/michael_brown.jpg",
+      "phoneNumber": "678-901-2345",
+      "department": "Research",
+      "email": "michael.brown@example.com",
+      "education": [
+        {
+          "institution": "Stanford University",
+          "startYear": 1998,
+          "endYear": 2002,
+          "degree": "Bachelor's, Computer Science"
+        },
+        {
+          "institution": "Stanford University",
+          "startYear": 2003,
+          "endYear": 2005,
+          "degree": "PhD, Artificial Intelligence"
+        }
+      ],
+      "workExperience": [
+        {
+          "institution": "DeepMind",
+          "startYear": 2006,
+          "endYear": 2010,
+          "title": "Research Scientist"
+        },
+        {
+          "institution": "OpenAI",
+          "startYear": 2015,
+          "endYear": 2020,
+          "title": "Lead AI Researcher"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Sophia Martinez",
+      "profile_photo_url": "https://example.com/photos/sophia_martinez.jpg",
+      "phoneNumber": "789-012-3456",
+      "department": "AI Development",
+      "email": "sophia.martinez@example.com",
+      "education": [
+        {
+          "institution": "University of California, Berkeley",
+          "startYear": 2000,
+          "endYear": 2004,
+          "degree": "Bachelor's, Computer Science"
+        }
+      ],
+      "workExperience": [
+        {
+          "institution": "Cyberdyne Systems",
+          "startYear": 2005,
+          "endYear": 2011,
+          "title": "Software Developer"
+        },
+        {
+          "institution": "NeuroTech",
+          "startYear": 2012,
+          "endYear": 2017,
+          "title": "Senior AI Developer"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "David Lee",
+      "profile_photo_url": "https://example.com/photos/david_lee.jpg",
+      "phoneNumber": "890-123-4567",
+      "department": "Technology",
+      "email": "david.lee@example.com",
+      "education": [
+        {
+          "institution": "University of Toronto",
+          "startYear": 1995,
+          "endYear": 1999,
+          "degree": "Bachelor's, Computer Engineering"
+        }
+      ],
+      "workExperience": [
+        {
+          "institution": "BlueTech Solutions",
+          "startYear": 2000,
+          "endYear": 2006,
+          "title": "Software Engineer"
+        },
+        {
+          "institution": "FinTech Innovations",
+          "startYear": 2008,
+          "endYear": 2015,
+          "title": "CTO"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Natalie Rogers",
+      "profile_photo_url": "https://example.com/photos/natalie_rogers.jpg",
+      "phoneNumber": "901-234-5678",
+      "department": "Cloud Computing",
+      "email": "natalie.rogers@example.com",
+      "education": [
+        {
+          "institution": "University of Michigan",
+          "startYear": 2002,
+          "endYear": 2006,
+          "degree": "Bachelor's, Information Technology"
+        }
+      ],
+      "workExperience": [
+        {
+          "institution": "DataWorks",
+          "startYear": 2007,
+          "endYear": 2012,
+          "title": "Database Administrator"
+        },
+        {
+          "institution": "CloudBase",
+          "startYear": 2013,
+          "endYear": 2018,
+          "title": "Cloud Architect"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Chris Thompson",
+      "profile_photo_url": "https://example.com/photos/chris_thompson.jpg",
+      "phoneNumber": "012-345-6789",
+      "department": "Frontend Development",
+      "email": "chris.thompson@example.com",
+      "education": [
+        {
+          "institution": "University of Washington",
+          "startYear": 1995,
+          "endYear": 1999,
+          "degree": "Bachelor's, Web Design"
+        }
+      ],
+      "workExperience": [
+        {
+          "institution": "WebCreations",
+          "startYear": 2000,
+          "endYear": 2005,
+          "title": "Frontend Developer"
+        },
+        {
+          "institution": "PixelTech",
+          "startYear": 2006,
+          "endYear": 2012,
+          "title": "Lead Frontend Developer"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Alicia Stevens",
+      "education": [
+        {
+          "institution": "University of Florida",
+          "startYear": 1999,
+          "endYear": 2003,
+          "degree": "Bachelor's, Computer Science"
+        },
+        {
+          "institution": "Georgia Tech",
+          "startYear": 2004,
+          "endYear": 2006,
+          "degree": "Master's, Cybersecurity"
+        }
+      ],
+      "workExperience": [
+        {
+          "institution": "SecureNet",
+          "startYear": 2007,
+          "title": "Security Analyst"
+        },
+        {
+          "institution": "CyberProtect",
+          "startYear": 2014,
+          "title": "Chief Security Officer (CSO)"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "name": "James Carter",
+      "education": [
+        {
+          "institution": "University of Washington",
+          "startYear": 2000,
+          "endYear": 2004,
+          "degree": "Bachelor's, Computer Engineering"
+        }
+      ],
+      "workExperience": [
+        {
+          "institution": "NextGen Software",
+          "startYear": 2005,
+          "title": "Backend Developer"
+        },
+        {
+          "institution": "FutureTech",
+          "startYear": 2013,
+          "title": "Lead Software Engineer"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Isabella Perez",
+      "education": [
+        {
+          "institution": "University of Texas at Austin",
+          "startYear": 2001,
+          "endYear": 2005,
+          "degree": "Bachelor's, Computer Science"
+        }
+      ],
+      "workExperience": [
+        {
+          "institution": "Innovative Solutions",
+          "startYear": 2006,
+          "title": "Software Developer"
+        },
+        {
+          "institution": "TechMasters",
+          "startYear": 2012,
+          "title": "Engineering Manager"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "name": "Ethan Harrison",
+      "education": [
+        {
+          "institution": "University of California, Los Angeles",
+          "startYear": 2003,
+          "endYear": 2007,
+          "degree": "Bachelor's, Computer Science"
+        }
+      ],
+      "workExperience": [
+        {
+          "institution": "AppDev Inc.",
+          "startYear": 2008,
+          "title": "Mobile Application Developer"
+        },
+        {
+          "institution": "SmartApps",
+          "startYear": 2015,
+          "title": "Lead Mobile Developer"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "name": "Olivia Ramirez",
+      "education": [
+        {
+          "institution": "University of Arizona",
+          "startYear": 2004,
+          "endYear": 2008,
+          "degree": "Bachelor's, Information Systems"
+        }
+      ],
+      "workExperience": [
+        {
+          "institution": "WebCore",
+          "startYear": 2009,
+          "title": "Frontend Developer"
+        },
+        {
+          "institution": "Designify",
+          "startYear": 2016,
+          "title": "UI/UX Designer"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "name": "Liam Foster",
+      "education": [
+        {
+          "institution": "University of Illinois Urbana-Champaign",
+          "startYear": 2000,
+          "endYear": 2004,
+          "degree": "Bachelor's, Computer Science"
+        }
+      ],
+      "workExperience": [
+        {
+          "institution": "TechPro",
+          "startYear": 2005,
+          "title": "Systems Analyst"
+        },
+        {
+          "institution": "DataX",
+          "startYear": 2012,
+          "title": "Data Scientist"
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "name": "Emma Johnson",
+      "education": [
+        {
+          "institution": "University of Virginia",
+          "startYear": 2002,
+          "endYear": 2006,
+          "degree": "Bachelor's, Computer Engineering"
+        }
+      ],
+      "workExperience": [
+        {
+          "institution": "SoftTech",
+          "startYear": 2007,
+          "title": "Software Engineer"
+        },
+        {
+          "institution": "WebCraft",
+          "startYear": 2014,
+          "title": "Senior Full Stack Developer"
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "name": "Jacob Lee",
+      "education": [
+        {
+          "institution": "University of California, San Diego",
+          "startYear": 2001,
+          "endYear": 2005,
+          "degree": "Bachelor's, Computer Science"
+        }
+      ],
+      "workExperience": [
+        {
+          "institution": "BrightTech",
+          "startYear": 2006,
+          "title": "Frontend Engineer"
+        },
+        {
+          "institution": "LightSpeed",
+          "startYear": 2013,
+          "title": "Lead UI Developer"
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "name": "Grace Walker",
+      "education": [
+        {
+          "institution": "New York University",
+          "startYear": 2000,
+          "endYear": 2004,
+          "degree": "Bachelor's, Information Systems"
+        }
+      ],
+      "workExperience": [
+        {
+          "institution": "DataFlow",
+          "startYear": 2005,
+          "title": "Data Analyst"
+        },
+        {
+          "institution": "InfoTech",
+          "startYear": 2011,
+          "title": "Data Engineering Manager"
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "name": "Lucas White",
+      "education": [
+        {
+          "institution": "University of Wisconsin-Madison",
+          "startYear": 1999,
+          "endYear": 2003,
+          "degree": "Bachelor's, Software Engineering"
+        }
+      ],
+      "workExperience": [
+        {
+          "institution": "WebX",
+          "startYear": 2004,
+          "title": "Backend Developer"
+        },
+        {
+          "institution": "TechHub",
+          "startYear": 2012,
+          "title": "CTO"
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "name": "Mia Robinson",
+      "education": [
+        {
+          "institution": "University of Colorado Boulder",
+          "startYear": 2001,
+          "endYear": 2005,
+          "degree": "Bachelor's, Information Technology"
+        }
+      ],
+      "workExperience": [
+        {
+          "institution": "SmartCode",
+          "startYear": 2006,
+          "title": "Software Developer"
+        },
+        {
+          "institution": "BrightApps",
+          "startYear": 2015,
+          "title": "Lead Software Engineer"
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "name": "Henry Martin",
+      "education": [
+        {
+          "institution": "Purdue University",
+          "startYear": 1998,
+          "endYear": 2002,
+          "degree": "Bachelor's, Computer Science"
+        }
+      ],
+      "workExperience": [
+        {
+          "institution": "InfoWeb",
+          "startYear": 2003,
+          "title": "Web Developer"
+        },
+        {
+          "institution": "NetSolutions",
+          "startYear": 2011,
+          "title": "Senior Web Engineer"
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "name": "Amelia Clark",
+      "education": [
+        {
+          "institution": "University of Toronto",
+          "startYear": 2004,
+          "endYear": 2008,
+          "degree": "Bachelor's, Computer Science"
+        }
+      ]
+    }
+  ]
 }

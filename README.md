@@ -17,6 +17,10 @@ npm install
 ```bash
 npm run dev
 ```
+4. Run test cases
+```bash
+npm run test
+```
 
 ## Server Setup
 1. Navigate to server folder

@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import SuspenseFallback from './SuspenseFallback';
+import SuspenseFallback from '../SuspenseFallback';
 
 describe('SuspenseFallback Component', () => {
   it('renders spinner with correct class', () => {

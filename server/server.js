@@ -1,10 +1,12 @@
 require('colors');
 var path = require('path');
+var cors = require('cors');
 var express = require('express');
 var people = require(path.join(__dirname, 'data/people.json'));
 
 var app = express();
 
+app.use(cors({origin: '*'}));
 
 app.use('/mockup/', express.static(path.join(__dirname, 'mockup')));
 app.get('/api/people', function(req, res) {
