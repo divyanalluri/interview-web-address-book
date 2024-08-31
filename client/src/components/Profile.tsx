@@ -7,15 +7,11 @@ const Profile: React.FC<{
     return <div className="app-person-profile-header">
         <div className="app-person-profile-photo" style={{ backgroundImage: 'url(avatar.png)' }}></div>
         <h2>{info.name}</h2>
-        <div className="app-person-profile-department">
-            {info?.department}
-        </div>
-        <div className="app-person-profile-phone-number">
-            {info?.phoneNumber}
-        </div>
-        <div className="app-person-profile-phone-number">
-            <a href="mailto:adam.wright@mycompany.com">{info?.email}</a>
-        </div>
+        {info?.department && <div className="app-person-profile-department">{info?.department}</div>}
+        {info?.phoneNumber && <div className="app-person-profile-phone-number">{info?.phoneNumber}</div>}
+        {info?.email && <div className="app-person-profile-phone-number">
+            <a href={`mailto:${info.email}`}>{info?.email}</a>
+        </div>}
     </div>;
 }
 

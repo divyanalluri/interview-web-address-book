@@ -1,4 +1,5 @@
 import React from 'react';
+import { EDUCATION, WORK_EXPERIENCE } from '../constants/Contact';
 import { WorkExperience, Education } from 'types/ContactTypes';
 
 const CareerDetails: React.FC<{
@@ -6,9 +7,9 @@ const CareerDetails: React.FC<{
 }> = ({ details, about }) => {
     return <div className="app-section">
         <div className="app-section-header">
-            <h3>{about === "education" ? "Education" : "Experience"}</h3>
+            <h3>{about === EDUCATION ? EDUCATION : WORK_EXPERIENCE}</h3>
         </div>
-        {details && details.length > 0 ? details?.map(detail => <div className="app-section-body">
+        {details && details.length > 0 ? details.map(detail => <div className="app-section-body">
             <div className="app-history-item">
                 <div className="app-history-item-dates">
                     {detail.startYear} - {detail.endYear || 'Present'}
