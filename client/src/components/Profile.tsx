@@ -10,8 +10,7 @@ const Profile: React.FC<{
         {info?.department && <div className="app-person-profile-department">{info?.department}</div>}
         {info?.phoneNumber && <div className="app-person-profile-phone-number">{info?.phoneNumber}</div>}
         {info?.email && <div className="app-person-profile-phone-number">
-            <a href={`mailto:${info.email}`}>{info?.email}</a>
-        </div>}
+            <a href={`mailto:${info.email}`}>{info?.email}</a></div>}
     </div>;
 }
 

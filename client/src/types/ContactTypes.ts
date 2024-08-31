@@ -10,6 +10,7 @@ export interface Contact {
   }
   
   export interface Education {
+    id: number;
     institution: string;
     startYear: number;
     endYear: number;
@@ -17,6 +18,7 @@ export interface Contact {
   }
   
   export interface WorkExperience {
+    id: number;
     institution: string;
     startYear: number;
     endYear?: number;

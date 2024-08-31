@@ -9,16 +9,19 @@ const ContactsList: React.FC<{
     return <div className='app-directory-container'>
         {Object.keys(contacts).map((letter) => (
             <React.Fragment key={letter}>
-                <div className="app-directory-separator">{letter}</div>
-                {contacts[letter].map((person) => (
-                    <div
-                        className="app-directory-item"
-                        key={person.id}
-                        onClick={() => onClickContact(person)}
-                    >
-                        {person.name}
-                    </div>
-                ))}
+                <h2 className="app-directory-separator">{letter}</h2>
+                <ul className="contacts-list">
+                    {contacts[letter].map((person) => (
+                        <li
+                            className="app-directory-item"
+                            key={person.id}
+                            tabIndex={0}
+                            onClick={() => onClickContact(person)}
+                        >
+                            {person.name}
+                        </li>
+                    ))}
+                </ul>
             </React.Fragment>
         ))}
     </div>;

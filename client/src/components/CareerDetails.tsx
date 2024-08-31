@@ -9,14 +9,14 @@ const CareerDetails: React.FC<{
         <div className="app-section-header">
             <h3>{about === EDUCATION ? EDUCATION : WORK_EXPERIENCE}</h3>
         </div>
-        {details && details.length > 0 ? details.map(detail => <div className="app-section-body">
+        {details && details.length > 0 ? details.map(detail => <div className="app-section-body" key={detail.id}>
             <div className="app-history-item">
                 <div className="app-history-item-dates">
                     {detail.startYear} - {detail.endYear || 'Present'}
                 </div>
                 <div className="app-history-item-body">
                     <div className="app-history-item-title">{detail.institution}</div>
-                    {about === 'education'
+                    {about === EDUCATION
                         ? (detail as Education).degree
                         : (detail as WorkExperience).title}
                 </div>

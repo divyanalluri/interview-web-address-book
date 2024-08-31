@@ -13,6 +13,7 @@ describe('Profile Component', () => {
         "email": "adam.wright@example.com",
         "education": [
             {
+                "id": 1,
                 "institution": "University of Toronto",
                 "startYear": 2004,
                 "endYear": 2008,

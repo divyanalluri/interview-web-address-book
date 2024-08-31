@@ -11,6 +11,7 @@ describe('ContactsList Component', () => {
                 "name": "Amelia Clark",
                 "education": [
                     {
+                        "id": 1,
                         "institution": "University of Toronto",
                         "startYear": 2004,
                         "endYear": 2008,
