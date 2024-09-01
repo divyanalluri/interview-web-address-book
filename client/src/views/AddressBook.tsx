@@ -29,6 +29,22 @@ const AddressBook: React.FC = () => {
         loadData();
     }, []);
 
+    const onDeleteContact = async (id: number) => {
+        try {
+            await ContactsService.deleteContact(id);
+
+            setContacts(prevContacts => {
+                const updatedContacts = prevContacts.filter(contact => contact.id !== id);
+                if (selectedContact?.id === id) {
+                    setSelectedContact(updatedContacts[0] || null);
+                }
+                return updatedContacts;
+            });
+        } catch (error) {
+            setError(error instanceof Error ? error.message : "Unknown Error");
+        }
+    };
+
     const filteredSortedContacts = useMemo(() => {
         if (!searchValue.trim() && sortOrder === SORT_ORDER.ASC) return contacts;
 
@@ -97,7 +113,7 @@ const AddressBook: React.FC = () => {
                     : <div className='no-contacts-text'> No contacts to display</div>}
             </div>
             <div tabIndex={-1} className='d-none d-md-block col-sm-7 col-xl-9' aria-live="polite" id="contact-details">
-                {selectedContact && <ContactView selectedContact={selectedContact} onClickBackButton={onClickBackButton} />}
+                {selectedContact && <ContactView selectedContact={selectedContact} onClickBackButton={onClickBackButton} onDeleteContact={onDeleteContact} />}
             </div>
         </div>
     </div>;

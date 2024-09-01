@@ -9,6 +9,7 @@ jest.mock('../../utils/ScreenUtils', () => ({
     isMobile: jest.fn().mockReturnValue(true),
 }));
 
+const people = [{ id: 1, name: 'John Doe' }, { id: 2, name: 'Jane Smith' }]
 describe('AddressBook Component', () => {
 
     beforeEach(() => {
@@ -42,7 +43,7 @@ describe('AddressBook Component', () => {
 
     it('search input filters contacts', async () => {
         (ContactsService.getContacts as jest.Mock).mockResolvedValue({
-            people: [{ name: 'John Doe' }, { name: 'Jane Smith' }],
+            people,
         });
 
         await act(async () => {
@@ -57,7 +58,7 @@ describe('AddressBook Component', () => {
 
     it('sort button toggles order', async () => {
         (ContactsService.getContacts as jest.Mock).mockResolvedValue({
-            people: [{ name: 'B' }, { name: 'A' }],
+            people: [{ id: 1, name: 'B' }, { id: 2, name: 'A' }],
         });
 
         await act(async () => {
@@ -78,7 +79,7 @@ describe('AddressBook Component', () => {
 
     it('clicking on a contact updates selected contact', async () => {
         (ContactsService.getContacts as jest.Mock).mockResolvedValue({
-            people: [{ name: 'John Doe' }, { name: 'Jane Smith' }],
+            people,
         });
 
         await act(async () => {
@@ -90,9 +91,9 @@ describe('AddressBook Component', () => {
     });
 
     it('onClickContact hides contact list and shows contact details', async () => {
-        (Utils.isMobile as jest.Mock).mockReturnValue(true); 
+        (Utils.isMobile as jest.Mock).mockReturnValue(true);
         (ContactsService.getContacts as jest.Mock).mockResolvedValue({
-            people: [{ name: 'John Doe' }, { name: 'Jane Smith' }],
+            people,
         });
         const { container } = await act(async () => {
             return render(<AddressBook />);
@@ -108,11 +109,11 @@ describe('AddressBook Component', () => {
     });
 
     it('onClickBackButton shows contact list and hides contact details on mobile', async () => {
-        (Utils.isMobile as jest.Mock).mockReturnValue(true); 
+        (Utils.isMobile as jest.Mock).mockReturnValue(true);
         (ContactsService.getContacts as jest.Mock).mockResolvedValue({
-            people: [{ name: 'John Doe' }, { name: 'Jane Smith' }],
+            people
         });
-        
+
         const { container } = await act(async () => {
             return render(<AddressBook />);
         });
@@ -123,10 +124,27 @@ describe('AddressBook Component', () => {
         fireEvent.click(screen.getByText('John Doe'));
         expect(contactList).toHaveClass('d-none');
         expect(contactDetails).not.toHaveClass('d-none');
-        
+
         fireEvent.click(screen.getAllByLabelText(/Back Button/i)[0]);
 
         expect(contactList).not.toHaveClass('d-none');
         expect(contactDetails).toHaveClass('d-none');
+    });
+
+    it('should call deleteContact when the Delete button is clicked', async () => {
+        (ContactsService.getContacts as jest.Mock).mockResolvedValue({
+            people
+        });
+        (ContactsService.deleteContact as jest.Mock).mockResolvedValue({});
+        const { getByText } = await act(async () => {
+            return render(<AddressBook />);
+        });
+
+        fireEvent.click(getByText('Delete Contact'));
+        await waitFor(() => {
+            expect(screen.queryByText('Jane Smith')).toBeNull();
+        });
+
+        expect(ContactsService.deleteContact).toHaveBeenCalledWith(2);
     });
 });
