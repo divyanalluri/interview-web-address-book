@@ -22,6 +22,21 @@ npm run dev
 npm run test
 ```
 
+## By default in dev the minification doesn't happen in case if we want to run on the dev 
+1. Navigate to client folder
+```bash
+cd client
+```
+2. Build the project
+```bash
+npm run build
+```
+3. Install serve and start local server (A local server and start a local server and serve the minified files from the dist)
+```bash
+sudo npm install -g serve
+serve dist
+```
+
 ## Server Setup
 1. Navigate to server folder
 ```bash

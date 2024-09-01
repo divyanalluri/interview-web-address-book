@@ -1,7 +1,7 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import terser from '@rollup/plugin-terser';
 
-// https://vitejs.dev/config/
 export default defineConfig({
   server: {
     port: 3000,
@@ -13,19 +13,16 @@ export default defineConfig({
     },
     open: true,
   },
-  plugins: [react()],
+  plugins: [
+    react(),
+    terser() // Apply the Terser plugin
+  ],
   build: {
-    outDir: 'dist', // Directory to output the bundled files
-    sourcemap: true, // Generate source maps for debugging
-    rollupOptions: {
-      input: {
-        main: '/src/main.tsx', // Entry point for your application
-      },
-      output: {
-        format: 'es', // Module format (can be 'es', 'cjs', or 'iife')
-        chunkFileNames: 'chunks/[name].[hash].js', // Output naming for chunks
-        assetFileNames: 'assets/[name].[hash].[ext]', // Output naming for assets
-      },
-    },
+    minify: 'terser', // Specify 'terser' as the minifier
   },
-})
+  optimizeDeps: {
+    esbuildOptions: {
+      minify: true // Ensure minification for optimized dependencies
+    }
+  }
+});
