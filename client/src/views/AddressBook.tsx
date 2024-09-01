@@ -35,7 +35,7 @@ const AddressBook: React.FC = () => {
     }, [contacts, searchValue, sortOrder])
 
     const groupedContacts = useMemo(() => {
-        if (contacts.length > 0) {
+        if (filteredSortedContacts.length > 0) {
             return filteredSortedContacts?.reduce((acc: { [key: string]: Contact[] }, person) => {
                 const letter = person.name[0];
                 if (!acc[letter]) acc[letter] = [];
@@ -43,7 +43,7 @@ const AddressBook: React.FC = () => {
                 return acc;
             }, {});
         }
-    }, [contacts, filteredSortedContacts])
+    }, [filteredSortedContacts])
 
     const onToggleSort = () => {
         setSortOrder(prevOrder => prevOrder === 'asc' ? 'desc' : 'asc');
@@ -62,7 +62,7 @@ const AddressBook: React.FC = () => {
     }
 
     return <div className='container'>
-        {contacts.length > 0 ? <div className='row'>
+        <div className='row'>
             <div className='contacts-list'>
                 <div>
                     <input type="search" className='form-control' aria-label="Search for contacts" placeholder='Search for contacts...' value={searchValue} onChange={onInputChange} />
@@ -74,12 +74,14 @@ const AddressBook: React.FC = () => {
                         {sortOrder === 'asc' ? '↓' : '↑'}
                     </button>
                 </div>
-                <ContactsList contacts={groupedContacts as { [key: string]: Contact[] }} onClickContact={onClickContact} />
+                {groupedContacts && Object.keys(groupedContacts)?.length > 0 ?
+                    <ContactsList contacts={groupedContacts as { [key: string]: Contact[] }} onClickContact={onClickContact} />
+                    : <div className='no-contacts-text'> No contacts to display</div>}
             </div>
             <div className='col-sm-8 col-xl-10'>
                 {selectedContact && <ContactView selectedContact={selectedContact} />}
             </div>
-        </div> : <div> No contacts to display</div>}
+        </div>
     </div>;
 }
 
