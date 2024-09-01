@@ -40,4 +40,16 @@ describe('ContactsList Component', () => {
         expect(mockFn).toHaveBeenCalledTimes(1);
     });
 
+    it('should call onClickContact when Enter key is pressed on a list item', () => {
+        const onClickContact = jest.fn();
+        render(<ContactsList contacts={contacts} onClickContact={onClickContact} />);
+
+        const listItem = screen.getByText('Amelia Clark');
+        
+        listItem.focus();
+        fireEvent.keyDown(listItem, { key: 'Enter', code: 'Enter', charCode: 13 });
+
+        expect(onClickContact).toHaveBeenCalledTimes(1);
+    });
+
 });

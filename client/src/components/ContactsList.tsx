@@ -6,6 +6,13 @@ const ContactsList: React.FC<{
     onClickContact: (contact: Contact) => void
 }> = ({ contacts, onClickContact }) => {
 
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLLIElement>, person: Contact) => {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            onClickContact(person);
+        }
+    };
+
     return <div className='app-directory-container'>
         {Object.keys(contacts).map((letter) => (
             <React.Fragment key={letter}>
@@ -15,8 +22,10 @@ const ContactsList: React.FC<{
                         <li
                             className="app-directory-item"
                             key={person.id}
+                            title={person.name}
                             tabIndex={0}
                             onClick={() => onClickContact(person)}
+                            onKeyDown={(event) => handleKeyDown(event, person)}
                         >
                             {person.name}
                         </li>

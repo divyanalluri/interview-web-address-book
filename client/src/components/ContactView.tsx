@@ -5,10 +5,19 @@ import { EDUCATION, WORK_EXPERIENCE } from '../constants/Contact';
 import CareerDetails from './CareerDetails';
 
 const ContactView: React.FC<{
-    selectedContact: Contact
-}> = ({ selectedContact }) => {
-    const { education, workExperience } = selectedContact
+    selectedContact: Contact,
+    onClickBackButton: () => void
+}> = ({ selectedContact, onClickBackButton }) => {
+    const { education, workExperience } = selectedContact;
+
     return <div className="app-person-profile-container">
+        <button
+            className="d-block d-md-none btn btn-primary"
+            aria-label="Back Button"
+            onClick={onClickBackButton}
+        >
+            <i className="bi bi-arrow-left"></i>
+        </button>
         <div className="app-person-profile docs-highlight docs-blue" data-intro="Person Profile" data-position="bottom">
             <Profile info={selectedContact} />
             <CareerDetails details={education} about={EDUCATION} />

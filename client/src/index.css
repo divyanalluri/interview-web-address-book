@@ -36,13 +36,9 @@ body {
 
 /* the alphabetical list of people */
 .app-directory-container {
-  position: absolute;
-  width: 300px;
-  left: 50px;
-  top: 70px;
-  bottom: 0;
+  max-height: calc(100vh - 80px);
+  margin-top: 80px;
   overflow: auto;
-  border-right: 2px solid #666;
 }
 
 .app-directory {
@@ -68,14 +64,9 @@ body {
   cursor: pointer;
 }
 
-/* the detailed view of person profile */
 .app-person-profile-container {
-  position: absolute;
-  left: 400px;
-  right: 0;
-  top: 0;
-  bottom: 0;
   overflow: auto;
+  margin-top: 50px;
 }
 
 .app-person-profile {
@@ -91,9 +82,10 @@ body {
   width: 125px;
   height: 125px;
   border-radius: 113px;
-  border: 2px solid var(--blue-color-01);;
+  border: 2px solid var(--blue-color-01);
   overflow: hidden;
   background-size: contain;
+  aspect-ratio: 1 / 1;
 }
 
 .app-person-profile-header {
@@ -147,10 +139,10 @@ body {
 }
 
 .form-control {
-  border: 2px solid var(--blue-color-01);;
+  border: 2px solid var(--blue-color-01);
   border-radius: 5px;
   padding: 10px;
-  margin: 15px 20px 10px 60px;
+  margin: 10px;
   font-size: 16px;
   color: #333;
   outline: none;
@@ -162,7 +154,7 @@ body {
 }
 
 .sort-button {
-  background-color: var(--blue-color-01);;
+  background-color: var(--blue-color-01);
   border: none;
   border-radius: 5px;
   color: white;
@@ -189,5 +181,10 @@ body {
 
 .no-contacts-text {
   position: absolute;
-  left: 60px;
+  left: 80px;
+  top: 80px;
+}
+
+#contact-list-navigation {
+  border-right: 2px solid #666;
 }

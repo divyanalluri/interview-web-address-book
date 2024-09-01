@@ -5,7 +5,13 @@ const Profile: React.FC<{
     info: Contact
 }> = ({ info }) => {
     return <div className="app-person-profile-header">
-        <img alt="Profile Photo" className="app-person-profile-photo" src={info.profile_photo_url ?? "avatar.png"} loading="lazy"></img>
+        <img
+            alt="Profile Photo"
+            className="app-person-profile-photo"
+            src={info.profile_photo_url ?? "avatar.png"}
+            onError={(e) => {
+                e.currentTarget.src = "avatar.png";
+            }}></img>
         <h2>{info.name}</h2>
         {info?.department && <div className="app-person-profile-department">{info?.department}</div>}
         {info?.phoneNumber && <div className="app-person-profile-phone-number">{info?.phoneNumber}</div>}

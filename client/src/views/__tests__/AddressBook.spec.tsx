@@ -2,8 +2,12 @@ import '@testing-library/jest-dom';
 import { render, screen, waitFor, act, fireEvent } from '@testing-library/react';
 import AddressBook from '../AddressBook';
 import { ContactsService } from '../../services/ContactsService';
+import * as Utils from '../../utils/ScreenUtils';
 
 jest.mock('../../services/ContactsService');
+jest.mock('../../utils/ScreenUtils', () => ({
+    isMobile: jest.fn().mockReturnValue(true),
+}));
 
 describe('AddressBook Component', () => {
 
@@ -64,7 +68,7 @@ describe('AddressBook Component', () => {
         expect(items[0]).toHaveTextContent('A');
         expect(items[1]).toHaveTextContent('B');
 
-        fireEvent.click(screen.getByRole('button', { name: /sort/i }));
+        fireEvent.click(screen.getAllByLabelText(/Toggle sort order/i)[0]);
 
         items = await screen.findAllByRole('listitem');
 
@@ -83,5 +87,46 @@ describe('AddressBook Component', () => {
 
         fireEvent.click(screen.getByText('John Doe'));
         expect(screen.queryAllByText('John Doe').length).toBeGreaterThan(1);
+    });
+
+    it('onClickContact hides contact list and shows contact details', async () => {
+        (Utils.isMobile as jest.Mock).mockReturnValue(true); 
+        (ContactsService.getContacts as jest.Mock).mockResolvedValue({
+            people: [{ name: 'John Doe' }, { name: 'Jane Smith' }],
+        });
+        const { container } = await act(async () => {
+            return render(<AddressBook />);
+        });
+
+        fireEvent.click(screen.getByText('John Doe'));
+
+        const contactList = container.querySelector('#contact-list-navigation');
+        const contactDetails = container.querySelector('#contact-details');
+
+        expect(contactList).toHaveClass('d-none');
+        expect(contactDetails).not.toHaveClass('d-none');
+    });
+
+    it('onClickBackButton shows contact list and hides contact details on mobile', async () => {
+        (Utils.isMobile as jest.Mock).mockReturnValue(true); 
+        (ContactsService.getContacts as jest.Mock).mockResolvedValue({
+            people: [{ name: 'John Doe' }, { name: 'Jane Smith' }],
+        });
+        
+        const { container } = await act(async () => {
+            return render(<AddressBook />);
+        });
+
+        const contactList = container.querySelector('#contact-list-navigation');
+        const contactDetails = container.querySelector('#contact-details');
+
+        fireEvent.click(screen.getByText('John Doe'));
+        expect(contactList).toHaveClass('d-none');
+        expect(contactDetails).not.toHaveClass('d-none');
+        
+        fireEvent.click(screen.getAllByLabelText(/Back Button/i)[0]);
+
+        expect(contactList).not.toHaveClass('d-none');
+        expect(contactDetails).toHaveClass('d-none');
     });
 });
