@@ -9,18 +9,27 @@ jest.mock('../../utils/ScreenUtils', () => ({
     isMobile: jest.fn().mockReturnValue(true),
 }));
 
-const people = [{ id: 1, name: 'John Doe' }, { id: 2, name: 'Jane Smith' }]
-describe('AddressBook Component', () => {
+const people = [{ id: 1, name: 'John Doe' }, { id: 2, name: 'Jane Smith' }];
 
+describe('AddressBook Component', () => {
     beforeEach(() => {
         jest.clearAllMocks();
     })
+    
     it('renders no contacts available message when no contacts', async () => {
         (ContactsService.getContacts as jest.Mock).mockResolvedValue({ people: [] });
         await act(async () => {
             render(<AddressBook />);
         });
         expect(await screen.queryAllByText('No contacts to display').length).toBeGreaterThan(0);
+    });
+
+    it('renders no contacts  view when no contacts was selected', async () => {
+        (ContactsService.getContacts as jest.Mock).mockResolvedValue({ people });
+        await act(async () => {
+            render(<AddressBook />);
+        });
+        expect(await screen.queryAllByText('Please select contact to view the details !').length).toBeGreaterThan(0);
     });
 
     it('renders Address book when contacts are available', async () => {

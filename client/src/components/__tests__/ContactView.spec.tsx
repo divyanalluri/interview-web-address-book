@@ -1,4 +1,4 @@
-import { render, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import ContactView from '../ContactView';
 import { Contact } from 'types/ContactTypes';
 
@@ -27,5 +27,19 @@ describe('ContactView component', () => {
 
         expect(mockOnDeleteContact).toHaveBeenCalledWith(selectedContact.id);
         expect(mockOnDeleteContact).toHaveBeenCalledTimes(1);
+    });
+
+    it('should call onClickBackButton when the back button is clicked', () => {
+        render(
+            <ContactView
+                selectedContact={selectedContact}
+                onClickBackButton={mockOnClickBackButton}
+                onDeleteContact={mockOnDeleteContact}
+            />
+        );
+
+        fireEvent.click(screen.getAllByLabelText(/Back Button/i)[0]);
+
+        expect(mockOnClickBackButton).toHaveBeenCalledTimes(1);
     });
 });

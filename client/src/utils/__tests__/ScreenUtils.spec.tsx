@@ -1,13 +1,6 @@
-// isMobile.test.js
-import { isMobile } from '../ScreenUtils'; // Adjust the import path
+import { isMobile } from '../ScreenUtils';
 
 describe('isMobile function', () => {
-  beforeEach(() => {
-    Object.defineProperty(window, 'innerWidth', {
-      writable: true,
-      value: 1024,
-    });
-  });
 
   it('returns true when window width is 767px or less', () => {
     Object.defineProperty(window, 'innerWidth', {

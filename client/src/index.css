@@ -182,3 +182,12 @@ body {
 #back-button {
   z-index: 1;
 }
+
+.no-contact-view {
+  height: 100vh;
+}
+
+#contact-details {
+  height: 100vh;
+  overflow: auto;
+}
