@@ -10,7 +10,7 @@ const AddressBook: React.FC = () => {
     const [contacts, setContacts] = useState<Contact[]>([]);
     const [searchValue, setSearchValue] = useState<string>("");
     const [sortOrder, setSortOrder] = useState<SortOrderType>(SORT_ORDER.ASC);
-    const [selectedContact, setSelectedContact] = useState<Contact>();
+    const [selectedContact, setSelectedContact] = useState<Contact | null>(null);
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
@@ -20,7 +20,7 @@ const AddressBook: React.FC = () => {
                 const sortedContacts = data.people?.sort((a, b) => a.name.localeCompare(b.name));
                 if (sortedContacts && sortedContacts.length > 0) {
                     setContacts(sortedContacts);
-                    setSelectedContact(sortedContacts[0]);
+                    if (!isMobile()) setSelectedContact(sortedContacts[0]);
                 }
             } catch (error) {
                 setError(error instanceof Error ? error.message : "Unknown Error");
@@ -35,11 +35,14 @@ const AddressBook: React.FC = () => {
 
             setContacts(prevContacts => {
                 const updatedContacts = prevContacts.filter(contact => contact.id !== id);
-                if (selectedContact?.id === id) {
+                if (selectedContact?.id === id && !isMobile()) {
                     setSelectedContact(updatedContacts[0] || null);
                 }
                 return updatedContacts;
             });
+            if (isMobile()) {
+                onClickBackButton();
+            }
         } catch (error) {
             setError(error instanceof Error ? error.message : "Unknown Error");
         }
@@ -77,18 +80,10 @@ const AddressBook: React.FC = () => {
         setSelectedContact(contact);
         const contactDetailsElement = document.getElementById('contact-details');
         contactDetailsElement?.focus();
-        if (isMobile()) {
-            const contactList = document.getElementById('contact-list-navigation');
-            contactList?.classList.add('d-none');
-            contactDetailsElement?.classList.remove('d-none');
-        }
     }
 
     const onClickBackButton = () => {
-        const contactList = document.getElementById('contact-list-navigation');
-        const contactDetailsElement = document.getElementById('contact-details');
-        contactList?.classList.remove('d-none');
-        contactDetailsElement?.classList.add('d-none');
+        setSelectedContact(null);
     }
 
     if (error) {
@@ -97,7 +92,7 @@ const AddressBook: React.FC = () => {
 
     return <div className='container'>
         <div className='row'>
-            <div className='col-md-5 col-xl-3' id="contact-list-navigation">
+            <div className={`${selectedContact && isMobile() ? 'd-none' : ''} col-md-5 col-xl-3`} id="contact-list-navigation">
                 <div className='d-flex align-items-center position-fixed'>
                     <input type="search" className='form-control' aria-label="Search for contacts" placeholder='Search for contacts...' value={searchValue} onChange={onInputChange} />
                     <button
@@ -112,8 +107,9 @@ const AddressBook: React.FC = () => {
                     <ContactsList contacts={groupedContacts as { [key: string]: Contact[] }} onClickContact={onClickContact} />
                     : <div className='no-contacts-text'> No contacts to display</div>}
             </div>
-            <div tabIndex={-1} className='d-none d-md-block col-sm-7 col-xl-9' aria-live="polite" id="contact-details">
-                {selectedContact && <ContactView selectedContact={selectedContact} onClickBackButton={onClickBackButton} onDeleteContact={onDeleteContact} />}
+            <div tabIndex={-1} className={`${!selectedContact ? 'd-none' : ''} d-md-block col-sm-7 col-xl-9`} aria-live="polite" id="contact-details">
+                {selectedContact ? <ContactView selectedContact={selectedContact} onClickBackButton={onClickBackButton} onDeleteContact={onDeleteContact} />
+                    : <div className='d-flex align-items-center justify-content-center'> Please select contact to view the details !</div>}
             </div>
         </div>
     </div>;

@@ -9,10 +9,10 @@ describe('isMobile function', () => {
     });
   });
 
-  it('returns true when window width is 768px or less', () => {
+  it('returns true when window width is 767px or less', () => {
     Object.defineProperty(window, 'innerWidth', {
       writable: true,
-      value: 768,
+      value: 767,
     });
 
     expect(isMobile()).toBe(true);
@@ -30,7 +30,7 @@ describe('isMobile function', () => {
   it('updates result when window size changes', () => {
     Object.defineProperty(window, 'innerWidth', {
       writable: true,
-      value: 768,
+      value: 767,
     });
 
     expect(isMobile()).toBe(true);

@@ -139,7 +139,7 @@ describe('AddressBook Component', () => {
         const { getByText } = await act(async () => {
             return render(<AddressBook />);
         });
-
+        fireEvent.click(screen.getByText('Jane Smith'));
         fireEvent.click(getByText('Delete Contact'));
         await waitFor(() => {
             expect(screen.queryByText('Jane Smith')).toBeNull();

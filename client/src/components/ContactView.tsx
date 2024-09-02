@@ -13,7 +13,8 @@ const ContactView: React.FC<{
 
     return <div className="app-person-profile-container">
         <button
-            className="d-block d-md-none btn btn-primary"
+            id="back-button"
+            className="position-absolute d-block d-md-none btn btn-primary"
             aria-label="Back Button"
             onClick={onClickBackButton}
         >
