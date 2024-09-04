@@ -1,9 +1,11 @@
-import { APIResponse } from "types/ContactTypes";
+import { ContactAPIResponse } from "types/ContactTypes";
+
+const API_URL = `http://localhost:8080/api`;
 
 export class ContactsService {
-  public static async getContacts(): Promise<APIResponse> {
+  public static async getContacts(): Promise<ContactAPIResponse> {
     try {
-      const response = await fetch("http://localhost:8080/api/people");
+      const response = await fetch(`${API_URL}/people`);
       if (!response.ok) {
         throw new Error(`Error: ${response.status} ${response.statusText}`);
       }
@@ -17,7 +19,7 @@ export class ContactsService {
 
   public static async deleteContact(id: number): Promise<void> {
     try {
-      const response = await fetch(`http://localhost:8080/api/people/${id}`, {
+      const response = await fetch(`${API_URL}/people/${id}`, {
         method: "DELETE",
       });
 

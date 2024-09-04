@@ -20,7 +20,7 @@ const ContactView: React.FC<{
         >
             <i className="bi bi-arrow-left"></i>
         </button>
-        <div className="app-person-profile docs-highlight docs-blue" data-intro="Person Profile" data-position="bottom">
+        <div className="app-person-profile">
             <Profile info={selectedContact} />
             <CareerDetails details={education} about={EDUCATION} />
             <CareerDetails details={workExperience} about={WORK_EXPERIENCE} />
